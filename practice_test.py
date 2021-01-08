@@ -1,11 +1,12 @@
 class PracticeTest:
 
     def __init__(self, name: str) -> None:
-        "A practice test generator for people studying for a subject"
+        """A practice test generator."""
         self.name = name
         self.questions_and_answers = {}
         self.score_sheet = {}
         self.score = 0
+        self.question_amount = 0
 
     def add_question_and_answer(self, question: str, answer: str) -> None:
         self.questions_and_answers[question] = answer
