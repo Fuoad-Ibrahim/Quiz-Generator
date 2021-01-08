@@ -1,6 +1,6 @@
 class QuizGenerator:
 
-    def __init__(self, name):
+    def __init__(self, name: str) -> None:
         """A practice test generator."""
         self.name = name
         self.questions_and_answers = {}
@@ -8,7 +8,7 @@ class QuizGenerator:
         self.score = 0
         self.question_amount = 0
 
-    def add_question_and_answer(self, question, answer) -> None:
+    def add_question_and_answer(self, question: str, answer: str) -> None:
         self.questions_and_answers[question] = answer
 
     def create_test(self) -> None:
