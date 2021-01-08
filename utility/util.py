@@ -1,16 +1,14 @@
 import random
 
-def start_test_exact(test) -> None:
-    """Test users using questions and answers from test object. This function
+def start_quiz_exact(quiz) -> None:
+    """quiz users using questions and answers from quiz object. This function
     records correct answers and provides a mark after completing.
 
     Args:
-        test(object): PracticeTest object.
+        quiz(object): QuizGenerator object.
     """
-    count = test.question_amount
-    print()
-    print("We Will Now Begin The Test!\n")
-    d = test.questions_and_answers.copy()
+    count = quiz.question_amount
+    d = quiz.questions_and_answers.copy()
 
     while count > 0:
         key = random.choice(list(d.keys()))
@@ -22,31 +20,29 @@ def start_test_exact(test) -> None:
         print()
 
         if answer == val:
-            test.score += 1
-            test.score_sheet[key] = "Correct!"
+            quiz.score += 1
+            quiz.score_sheet[key] = "Correct!"
         else:
-            test.score_sheet[key] = "InCorrect"
+            quiz.score_sheet[key] = "InCorrect"
         count -= 1
     print()
-    print("Your total score is: ", test.score, "/", test.question_amount)
-    print(test.score_sheet)
+    print("Your total score is: ", quiz.score, "/", quiz.question_amount)
+    print(quiz.score_sheet)
 
 
-def start_test_show(test) -> None:
-    """Test users using questions and answers from test object. Users can choose
+def start_quiz_show(quiz) -> None:
+    """Quiz users using questions and answers from quiz object. Users can choose
     to show correct answer after each question they answer or show all after
-    completing test.
+    completing quiz.
 
     Args:
-        test(object): PracticeTest object.
+        quiz(object): QuizGenerator object.
     """
-    count = test.question_amount
-    print()
-    print("We Will Now Begin The Test!\n")
-    d = test.questions_and_answers.copy()
+    count = quiz.question_amount
+    d = quiz.questions_and_answers.copy()
     x = input("Enter 1 if you would like to see correct answer after answering" \
               " each question or enter 2 if you would like to see correct" \
-              " answers at the end")
+              " answers at the end: ")
     print()
     users_answers = {}
     ques_num = 1
@@ -72,25 +68,25 @@ def start_test_show(test) -> None:
             print()
             count -= 1
         print("--- Results ---\n")
-        for i in test.questions_and_answers:
+        for i in quiz.questions_and_answers:
             print(f"Question #{ques_num}: {i}\n")
             print(f"Your Answer: {users_answers[i]}")
-            print(f"Correct Answer: {test.questions_and_answers[i]}\n")
+            print(f"Correct Answer: {quiz.questions_and_answers[i]}\n")
             ques_num += 1
 
 
-def validate_test_type() -> str:
+def validate_quiz_type() -> str:
     """Docstring"""
 
-    test_type = input("Enter 1 for ExactAnswer and 2 for ShowAnswer: ")
-    test_type.replace(' ', '')
+    quiz_type = input("Enter 1 for ExactAnswer and 2 for ShowAnswer: ")
+    quiz_type.replace(' ', '')
     print()
 
-    while test_type != '1' and test_type != '2':
+    while quiz_type != '1' and quiz_type != '2':
         print("Invalid entry: Must enter 1 for ExactAnswer or 2 for ShowAnswer.\n")
-        test_type = input("Enter 1 for ExactAnswer and 2 for ShowAnswer: ")
-        test_type.replace(' ', '')
+        quiz_type = input("Enter 1 for ExactAnswer and 2 for ShowAnswer: ")
+        quiz_type.replace(' ', '')
         print()
 
-    return test_type
+    return quiz_type
     
