@@ -1,6 +1,6 @@
-class PracticeTest:
+class QuizGenerator:
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name):
         """A practice test generator."""
         self.name = name
         self.questions_and_answers = {}
@@ -8,7 +8,7 @@ class PracticeTest:
         self.score = 0
         self.question_amount = 0
 
-    def add_question_and_answer(self, question: str, answer: str) -> None:
+    def add_question_and_answer(self, question, answer) -> None:
         self.questions_and_answers[question] = answer
 
     def create_test(self) -> None:
@@ -28,8 +28,8 @@ class PracticeTest:
                     is_int = False
 
         self.question_amount = amount
+        
         count = amount
-
         while count > 0:
             question = input("Enter question: ")
             answer = input("Enter Answer: ")
