@@ -1,19 +1,20 @@
 import random
 
+
 def start_quiz_exact(quiz) -> None:
-    """quiz users using questions and answers from quiz object. This function
-    records correct answers and provides a mark after completing.
+    """Quiz users using questions and answers from quiz object. This function
+    records correct answers and provides a grade after completing.
 
     Args:
         quiz(object): QuizGenerator object.
     """
     count = quiz.question_amount
-    d = quiz.questions_and_answers.copy()
+    ques_and_ans = quiz.questions_and_answers.copy()
 
     while count > 0:
-        key = random.choice(list(d.keys()))
-        val = d[key].replace(' ', '').lower()  #removes whitespace and makes string lower case
-        del d[key]
+        key = random.choice(list(ques_and_ans.keys()))
+        val = ques_and_ans[key].replace(' ', '').lower()  #removes whitespace and makes string lower case
+        del ques_and_ans[key]
         print(key)
         answer = input("Enter answer: ")
         answer.replace(' ', '').lower()
@@ -39,39 +40,39 @@ def start_quiz_show(quiz) -> None:
         quiz(object): QuizGenerator object.
     """
     count = quiz.question_amount
-    d = quiz.questions_and_answers.copy()
-    x = input("Enter 1 if you would like to see correct answer after answering" \
+    ques_and_ans = quiz.questions_and_answers.copy()
+    user_input = input("Enter 1 if you would like to see correct answer after answering" \
               " each question or enter 2 if you would like to see correct" \
               " answers at the end: ")
     print()
     users_answers = {}
     ques_num = 1
 
-    if x == '1':
+    if user_input == '1':
         while count > 0:
-            key = random.choice(list(d.keys()))
+            key = random.choice(list(ques_and_ans.keys()))
             print(f"Question #{ques_num}: {key}\n")
             answer = input("Enter answer: ")
             users_answers[key] = answer
-            print(f"Correct Answer: {d[key]}\n")
-            del d[key]
+            print(f"Correct Answer: {ques_and_ans[key]}\n")
+            del ques_and_ans[key]
             ques_num += 1
             count -= 1
 
-    elif x == '2':
+    elif user_input == '2':
         while count > 0:
-            key = random.choice(list(d.keys()))
-            del d[key]
+            key = random.choice(list(ques_and_ans.keys()))
+            del ques_and_ans[key]
             print(key)
             answer = input("Enter answer: ")
             users_answers[key] = answer
             print()
             count -= 1
         print("--- Results ---\n")
-        for i in quiz.questions_and_answers:
-            print(f"Question #{ques_num}: {i}\n")
-            print(f"Your Answer: {users_answers[i]}")
-            print(f"Correct Answer: {quiz.questions_and_answers[i]}\n")
+        for ques in quiz.questions_and_answers:
+            print(f"Question #{ques_num}: {ques}\n")
+            print(f"Your Answer: {users_answers[ques]}")
+            print(f"Correct Answer: {quiz.questions_and_answers[ques]}\n")
             ques_num += 1
 
 
@@ -89,4 +90,3 @@ def validate_quiz_type() -> str:
         print()
 
     return quiz_type
-    
