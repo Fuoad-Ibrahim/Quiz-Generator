@@ -1,5 +1,6 @@
 from utility import util
 
+
 class QuizGenerator:
 
     def __init__(self, name: str) -> None:
@@ -14,7 +15,34 @@ class QuizGenerator:
         self.questions_and_answers[question] = answer
 
     def create_quiz(self) -> None:
+        """A fire docstring"""
+
+        ques_amount = self.validate_ques_amount()
+
+        while ques_amount > 0:
+            question = input("Enter question: ")
+            answer = input("Enter Answer: ")
+            print()
+            self.add_question_and_answer(question, answer)
+            ques_amount -= 1
+
+    def run_quiz(self, quiz_type: str) -> None:
+
+        print("We Will Now Begin The Quiz!\n")
+        if quiz_type == '1':
+            util.start_quiz_exact(self)
+        elif quiz_type == '2':
+            util.start_quiz_show(self)
+
+    def _validate_ques_amount(self) -> int:
+        """Helper Method. Used to ensure user enters a valid number for question
+         amount when creating a quiz.
+
+         Returns:
+             int: Valid integer for question amount.
+         """
         is_int = False
+        amount = 0
         while is_int is False:
             try:
                 amount = int(
@@ -30,19 +58,4 @@ class QuizGenerator:
                     is_int = False
 
         self.question_amount = amount
-        
-        count = amount
-        while count > 0:
-            question = input("Enter question: ")
-            answer = input("Enter Answer: ")
-            print()
-            self.add_question_and_answer(question, answer)
-            count -= 1
-    
-    def run_quiz(self, quiz_type: str) -> None:
-
-        print("We Will Now Begin The Quiz!\n")
-        if quiz_type == '1':
-            util.start_quiz_exact(self)
-        elif quiz_type == '2':
-            util.start_quiz_show(self)
+        return amount
