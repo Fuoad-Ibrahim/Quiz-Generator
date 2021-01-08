@@ -6,10 +6,19 @@ class QuizGenerator:
     def __init__(self, name: str) -> None:
         """A quiz generator."""
         self.name = name
-        self.questions_and_answers = {}
-        self.score_sheet = {}
         self.score = 0
+        self.score_sheet = {}
+        self.questions_and_answers = {}
         self.question_amount = 0
+
+    def get_questions_and_answers(self) -> dict:
+        return self.questions_and_answers
+    
+    def increment_score(self) -> None:
+        self.score += 1
+    
+    def add_to_score_sheet(self, key, value) -> None:
+        self.score_sheet[key] = value
 
     def add_question_and_answer(self, question: str, answer: str) -> None:
         self.questions_and_answers[question] = answer
@@ -17,7 +26,7 @@ class QuizGenerator:
     def create_quiz(self) -> None:
         """A fire docstring"""
 
-        ques_amount = self.validate_ques_amount()
+        ques_amount = self._validate_ques_amount()
 
         while ques_amount > 0:
             question = input("Enter question: ")
@@ -25,14 +34,6 @@ class QuizGenerator:
             print()
             self.add_question_and_answer(question, answer)
             ques_amount -= 1
-
-    def run_quiz(self, quiz_type: str) -> None:
-
-        print("We Will Now Begin The Quiz!\n")
-        if quiz_type == '1':
-            util.start_quiz_exact(self)
-        elif quiz_type == '2':
-            util.start_quiz_show(self)
 
     def _validate_ques_amount(self) -> int:
         """Helper Method. Used to ensure user enters a valid number for question
