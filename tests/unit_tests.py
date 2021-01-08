@@ -1,13 +1,16 @@
 import unittest
-from practice_test import PracticeTest
+
+import sys
+sys.path.append("..")
+import quiz_generator
 
 
-class TestPracticeTest(unittest.TestCase):
+class TestQuizGenerator(unittest.TestCase):
 
     def test_adding_questions_and_answers(self):
-        # Assume
-
-        test = PracticeTest('Tim')
+        
+        #Assume
+        test = quiz_generator.QuizGenerator("Tim")
         question1 = "What is 2+2"
         answer1 = "4"
         question2 = "What is 3*3"
@@ -20,5 +23,4 @@ class TestPracticeTest(unittest.TestCase):
         test.add_question_and_answer(question2, answer2)
 
         # Assert
-
         self.assertTrue(correct_dict == test.questions_and_answers)
