@@ -3,12 +3,13 @@ def start_quiz_exact(quiz, users_answers) -> None:
     records correct answers and provides a grade after completing.
 
     Args:
-        quiz(object): QuizGenerator object.
+        quiz (object): QuizGenerator object.
+        users_answers (dict): The user's answers.
     """
 
     for key, value in users_answers.items():
 
-        org_ans = quiz.questions_and_answers[key].replace(' ', '').lower()
+        org_ans = quiz.get_questions_and_answers()[key].replace(' ', '').lower()
         user_ans = value.replace(' ', '').lower()
 
         if org_ans == user_ans:
@@ -21,13 +22,14 @@ def start_quiz_exact(quiz, users_answers) -> None:
     print(quiz.score_sheet)
 
 
-def start_quiz_show(quiz, users_answers) -> None:
+def start_quiz_show(quiz: object, users_answers: dict) -> None:
     """Quiz users using questions and answers from quiz object. Users can choose
     to show correct answer after each question they answer or show all after
     completing quiz.
 
     Args:
-        quiz(object): QuizGenerator object.
+        quiz (object): QuizGenerator object.
+        users_answers (dict): The user's answers.
     """
 
     ques_num = 1
