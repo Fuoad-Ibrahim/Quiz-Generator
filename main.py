@@ -3,7 +3,8 @@ import quiz_generator
 import random
 
 if __name__ == "__main__":
-    print('Welcome! You have the option of creating an "Exact Answer" quiz or'
+    # Welcome message
+    print('\nWelcome! You have the option of creating an "Exact Answer" quiz or'
           'a "Show Answer" quiz. For the "Exact Answer" quiz your answer must '
           'match the answer from the quiz exactly whereas the "Show Answer" '
           ' quiz does not. The "Exact Answer" quiz is not case or space '
@@ -29,7 +30,7 @@ if __name__ == "__main__":
                                  "after completing the quiz: \n")
 
     # Create the quiz
-    print("Let's create your quiz!\n")
+    print("\nLet's create your quiz!\n")
     name = input('What would you like to name your quiz?\n')
     quiz = quiz_generator.QuizGenerator(name)
     quiz.create_quiz()
