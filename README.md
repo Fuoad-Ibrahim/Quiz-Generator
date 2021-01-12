@@ -15,5 +15,5 @@ similar to que cards. The Show Answer quiz is effective when users would like to
  selected question from their quiz. 
 
 ## Requirements
-This project does not require any downloads/installations. To start, run the 
-"main" file in the "dist" folder.
+This project does not require any additional python modules. To start, download and run the 
+"main" file located inside the "dist" folder.
